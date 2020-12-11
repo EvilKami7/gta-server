@@ -1,0 +1,26 @@
+<div class="page-inner">
+  <div class="header-wrapper"  [style.backgroundColor]="mainPage?'transparent':'#1F2041'">
+    <header class="main-header" >
+      <h1>
+        <a routerLink="/">GTAV ROLEPLAY SERVER</a>
+      </h1>
+      <nav class="main-nav">
+        <ul>
+          <li>
+            <a [routerLink]="['/', 'news']">News</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer-wrapper">
+    <footer class="main-footer">
+      <h1>
+        <a routerLink="/">Roleplay</a>
+      </h1>
+    </footer>
+  </div>
+</div>

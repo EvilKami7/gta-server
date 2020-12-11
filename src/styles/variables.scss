@@ -1,0 +1,99 @@
+$black:                       #1F2041;
+$gray:                        rgba(31, 32, 65, 0.75);
+$white:                       hsl(0, 0%, 100%);
+
+$purple:                      #BC9CFF;
+$green:                       #6FCF97;
+
+$color-vk:                    #4a76a8;
+$color-fb:                    #4267b2;
+$color-tw:                    #40a2f5;
+$color-gh:                    #24292e;
+
+$color-main:                   $gray;
+
+$linear-green:                linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+$linear-purple:               linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+
+// Семантические цвета
+
+$text-color:                  $white;
+$text-title:                  $white;
+$body-bg:                     $white;
+
+$link-color:                  $purple;
+$link-color--hover:           darken($purple, 15%);
+
+$border-color:                $gray;
+
+
+
+// Базовая типографика
+
+$font-size:                   0.875em;
+
+$font-size-h1:                1.5px;
+$font-size-h2:                1.2px;
+$font-size-h3:                1.1px;
+$font-size-h4:                1px;
+$font-size-h5:                12px;
+$font-size-h6:                12px;
+
+$font-size-sm:                0.75em; // 12px от 16px
+
+$line-height-h1:              30px;
+$line-height-h2:              24px;
+$line-height-h3:              15px;
+$line-height-var-2:           14px;
+$line-height:                 24px;
+$line-height--var:            17px;
+
+$typo-margin-vertical:        1em;
+
+$font-family:                 'montserrat';
+$font-family--monospace:      'montserrat';
+$font-family--bold:           'montserrat-Bold';
+$font-family--quicksandbold:  'montserrat-Bold';
+// Georgia, Times New Roman, Times, serif
+
+
+
+// Ширины
+
+$screen-xs:                   0;
+$screen-sm:                   480px;
+$screen-md:                   768px;
+$screen-lg:                   992px;
+$screen-xl:                   1200px;
+$screen-xxl:                  1800px;
+
+$container-sm:                100%;
+$container-md:                100%;
+$container-lg:                $screen-lg - 30;
+$container-xl:                $screen-xl - 30;
+$container-xxl:               $screen-xxl - 30;
+
+
+
+// Модульная сетка
+
+$grid-columns:                12;
+$grid-gutter-width:           30px;
+
+
+
+// Разное
+
+$field-padding-vertical:      5px;
+$field-padding-horizontal:    12px;
+
+$border-radius:               3px;
+$opacity:                     0.7;
+$transition-time:             0.3s;
+$shadow:                      0 4px 2px -2px rgba(0, 0, 0, 0.3);
+
+$menu-desktop-width:          $screen-lg;
+$toggler-part-height:         3px;
+$toggler-part-bg-color:       #000;
+
+$z-index-modal:               100;

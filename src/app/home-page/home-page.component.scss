@@ -1,0 +1,17 @@
+.content-wrapper{
+
+  display: flex;
+  flex-direction: column;
+  .main-content{
+    width: 100%;
+    height: calc(100vh - 2px);
+    background: #8BA4F9;
+    border-bottom: 2px black solid;
+  }
+  .main-content:first-child{
+    height: calc(100vh - 2px);
+    margin-top: -5em;
+    //position: absolute;
+
+  }
+}
