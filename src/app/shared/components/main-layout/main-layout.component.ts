@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, ResolveEnd, Router} from '@angular/router';
-import {filter, map} from 'rxjs/operators';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-layout',
@@ -10,22 +10,16 @@ import {filter, map} from 'rxjs/operators';
 })
 export class MainLayoutComponent implements OnInit {
   mainPage: boolean;
-  currentRoute: any;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router) {
     console.log(this.router.url);
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd))
       .subscribe(event => {
-        if(event.url === '/'){
-          this.mainPage = true;
-        }else{
-          this.mainPage = false;
-        }
-        this.currentRoute = event.url;
-        console.log('url:', event.url);
+        event.url === '/' ? this.mainPage = true : this.mainPage = false;
       });
   }
+
   ngOnInit(): void {
   }
 

@@ -8,6 +8,16 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { PostComponent } from './shared/components/post/post.component';
 import { NewsPageComponent } from './news-page/news-page.component';
+import {SWIPER_CONFIG, SwiperModule, SwiperConfigInterface} from 'ngx-swiper-wrapper';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  observer: true,
+  direction: 'horizontal',
+  threshold: 50,
+  spaceBetween: 5,
+  slidesPerView: 1,
+  centeredSlides: true
+};
 
 @NgModule({
   declarations: [
@@ -20,9 +30,15 @@ import { NewsPageComponent } from './news-page/news-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SwiperModule,
   ],
-  providers: [],
+  providers: [    {
+    provide: SWIPER_CONFIG,
+    useValue: DEFAULT_SWIPER_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

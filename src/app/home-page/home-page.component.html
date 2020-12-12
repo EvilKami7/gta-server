@@ -1,6 +1,20 @@
 <div class="content-wrapper">
   <div class="main-content">
+    <div  class="swiper-container" [swiper]="config">
+      <div class="swiper-wrapper">
+        <div *ngFor="let slide of slides" class="swiper-slide">
+          <div class="swiper-img">
+            <img [src]="slide" alt="image" class="slide">
+          </div>
+        </div>
+      </div>
 
+      <div class="swiper-scrollbar"></div>
+      <div class="swiper-pagination"></div>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
   </div>
   <div class="main-content">
 
