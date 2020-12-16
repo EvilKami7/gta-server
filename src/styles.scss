@@ -1,22 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import "variables.scss";
 
-  body{
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    position: relative;
-  }
+body{
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  position: relative;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
 
-  a{
-    display: inline-block;
+a{
+  display: inline-block;
+  text-decoration: none;
+  color: $white;
+}
+
+ul{
+  li{
     text-decoration: none;
-    color: $white;
+    list-style-type: none;
   }
+}
 
-  ul{
-    li{
-      text-decoration: none;
-      list-style-type: none;
-    }
-  }
+.limit{
+  width: 70%;
+  margin: 0 auto;
+}

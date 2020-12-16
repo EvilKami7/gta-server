@@ -10,6 +10,8 @@ import { PostComponent } from './shared/components/post/post.component';
 import { NewsPageComponent } from './news-page/news-page.component';
 import {SWIPER_CONFIG, SwiperModule, SwiperConfigInterface} from 'ngx-swiper-wrapper';
 
+
+
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   observer: true,
   direction: 'horizontal',
@@ -31,7 +33,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SwiperModule,
+    SwiperModule
   ],
   providers: [    {
     provide: SWIPER_CONFIG,

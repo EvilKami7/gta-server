@@ -6,11 +6,14 @@
 
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   .main-content{
     width: 100%;
     height: calc(100vh - 2px);
     background: $black;
     border-bottom: 2px black solid;
+    scroll-snap-align: center;
   }
   .main-content:first-child{
     height: calc(100vh - 2px);

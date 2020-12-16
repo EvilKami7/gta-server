@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Swiper, SwiperOptions} from 'swiper';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
@@ -7,12 +8,22 @@ import {Swiper, SwiperOptions} from 'swiper';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor() { }
+  content: any = document.getElementsByClassName('content-wrapper');
+  main: HTMLCollectionOf<Element> = document.getElementsByClassName('main-content');
+  anchorsId: string[] = [];
+  viewPageIndex: number;
+  constructor() {
+    this.viewPageIndex = 0;
+  }
 
   ngOnInit(): void {
-
+    console.log(this.content);
+    for (const item of this.main){
+      this.anchorsId.push(item.id);
+    }
   }
+
+
 
   public slides = [
     'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-43-2560x1600.jpg',
@@ -41,6 +52,20 @@ export class HomePageComponent implements OnInit {
     loop: true,
   };
 
-
-
+  @HostListener('mousewheel', ['$event'])
+  onScroll(event: WheelEvent){
+    const wheelDelta = Math.max(-1, Math.min(1, (event.deltaY || -event.detail)));
+    if (wheelDelta > 0) {
+      if (this.viewPageIndex < this.main.length){
+        this.viewPageIndex += 1;
+      }
+    }else {
+      if (this.viewPageIndex > 0){
+        this.viewPageIndex -= 1;
+      }
+    }
+    event.preventDefault();
+    console.log(event);
+    this.main[this.viewPageIndex].scrollIntoView({block: 'center', behavior: 'smooth'});
+  }
 }
