@@ -36,7 +36,7 @@
         </small>
       </div>
     </div>
-    <button type="submit" class="btn" [disabled]="form.invalid">LogIn</button>
+    <button type="submit" class="btn" [disabled]="form.invalid || submitted">LogIn</button>
     <!--  -->
   </form>
 </div>
