@@ -1,0 +1,21 @@
+@import 'variables.scss';
+.login{
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+}
+.forms{
+  transform: translate(50%, 50%);
+  width: 50%;
+  align-self: center;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+}
+.form-control{
+  margin: 1em 0;
+}
+.validation{
+  color: $red;
+}

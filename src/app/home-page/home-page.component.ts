@@ -56,7 +56,7 @@ export class HomePageComponent implements OnInit {
   onScroll(event: WheelEvent){
     const wheelDelta = Math.max(-1, Math.min(1, (event.deltaY || -event.detail)));
     if (wheelDelta > 0) {
-      if (this.viewPageIndex < this.main.length){
+      if (this.viewPageIndex < this.main.length - 1){
         this.viewPageIndex += 1;
       }
     }else {

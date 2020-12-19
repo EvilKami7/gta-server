@@ -1,2 +1,32 @@
-<h1>Admin Layout</h1>
-<router-outlet></router-outlet>
+<div class="page-inner">
+  <div class="header-wrapper">
+    <header class="main-header limit" >
+      <h1>
+        <a routerLink="/">Admin</a>
+      </h1>
+      <nav class="main-nav">
+        <ul>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/admin', 'dashboard']">Dashboard</a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['/admin', 'create']">Create</a>
+          </li>
+          <li>
+            <a href="#" (click)="logout($event)">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer-wrapper">
+    <footer class="main-footer limit">
+      <h1>
+        <a routerLink="/">Roleplay</a>
+      </h1>
+    </footer>
+  </div>
+</div>

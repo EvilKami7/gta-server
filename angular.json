@@ -29,7 +29,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/", "src/styles/"
+                "src/",
+                "src/styles/"
               ]
             },
             "styles": [
@@ -98,7 +99,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/", "src/styles/"
+                "src/",
+                "src/styles/"
               ]
             },
             "styles": [
@@ -133,6 +135,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "gta-server"
 }

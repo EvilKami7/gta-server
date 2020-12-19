@@ -9,6 +9,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { PostComponent } from './shared/components/post/post.component';
 import { NewsPageComponent } from './news-page/news-page.component';
 import {SWIPER_CONFIG, SwiperModule, SwiperConfigInterface} from 'ngx-swiper-wrapper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -28,12 +29,13 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     HomePageComponent,
     PostPageComponent,
     PostComponent,
-    NewsPageComponent
+    NewsPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SwiperModule
+    SwiperModule,
+    BrowserAnimationsModule
   ],
   providers: [    {
     provide: SWIPER_CONFIG,
