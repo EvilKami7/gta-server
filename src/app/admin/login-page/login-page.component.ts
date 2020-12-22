@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../shared/interfaces';
 import {AuthService} from '../shared/services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {paramsList} from 'swiper/angular/angular/src/utils/params-list';
 
 @Component({
   selector: 'app-login-page',
@@ -13,13 +14,24 @@ export class LoginPageComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
+  message: string;
 
   constructor(
-    private auth: AuthService,
-    private router: Router) {
+    public auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['loginAgain']){
+        this.message = 'Please, Log In';
+      } else if (params['authFailed']){
+        this.message = 'Сессия истекла. Войдите заново';
+      }
+    })
+
     this.form = new FormGroup({
       email: new FormControl(null, [
         Validators.email,
@@ -43,6 +55,8 @@ export class LoginPageComponent implements OnInit {
     this.auth.login(user).subscribe(() => {
       this.form.reset();
       this.router.navigate(['/admin', 'dashboard']);
+      this.submitted = false;
+    }, () => {
       this.submitted = false;
     });
   }

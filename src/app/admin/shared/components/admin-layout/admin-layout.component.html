@@ -4,7 +4,7 @@
       <h1>
         <a routerLink="/">Admin</a>
       </h1>
-      <nav class="main-nav">
+      <nav class="main-nav" *ngIf="auth.isAuthenticated()">
         <ul>
           <li routerLinkActive="active">
             <a [routerLink]="['/admin', 'dashboard']">Dashboard</a>
