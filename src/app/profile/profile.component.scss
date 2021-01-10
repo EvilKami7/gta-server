@@ -1,0 +1,28 @@
+.profile{
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &-form{
+    margin-top: 2em;
+    width: 50%;
+  }
+  &-image--big{
+    width: 20%;
+  }
+  &-control{
+    display: flex;
+    align-items: baseline;
+  }
+  &-label{
+    color: black;
+    margin-right: 0.7em;
+  }
+  &-input{
+    border: none;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    padding: 0;
+  }
+}

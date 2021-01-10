@@ -1,0 +1,20 @@
+.alert-wrap{
+  position: fixed;
+  top: 50px;
+  right: 40px;
+  max-width: 200px;
+  width: 150px;
+  padding: 0.2em;
+  z-index: 15;
+}
+
+.alert{
+  p{
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+  }
+  &-success{
+    background-color: green;
+  }
+}

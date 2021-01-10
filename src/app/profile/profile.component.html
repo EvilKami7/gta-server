@@ -1,0 +1,66 @@
+<div class = "profile limit">
+  <div class="profile-image profile-image--big">
+    <img src="{{profileService.profile.image}}">
+  </div>
+  <form class="profile-form" [formGroup]="form" (ngSubmit)="update()">
+    <div
+      [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}"
+      class="form-control profile-control">
+      <label for="name" class="profile-label">Name</label>
+      <input id="name" class="profile-input" type="text" formControlName="name">
+      <div
+        *ngIf="form.get('name').touched && form.get('name').invalid"
+        class="validation">
+        <small *ngIf="form.get('name').errors.required">
+          Заполните поле
+        </small>
+      </div>
+    </div>
+
+    <div class="alert" *ngIf="auth.error$ | async as error">
+      {{error}}
+    </div>
+
+    <div
+      [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+      class="form-control  profile-control">
+      <label for="email" class="profile-label">Email</label>
+      <input id="email" class="profile-input" type="email" formControlName="email">
+      <div
+        *ngIf="form.get('email').touched && form.get('email').invalid"
+        class="validation">
+        <small *ngIf="form.get('email').errors.required">
+          Заполните поле
+        </small>
+        <small *ngIf="form.get('email').errors.email">
+          Введите корректный email
+        </small>
+      </div>
+    </div>
+
+    <div
+      [ngClass]="{invalid: form.get('bio').touched && form.get('bio').invalid}"
+      class="form-control  profile-control" >
+      <label for="bio" class="profile-label">Bio</label>
+      <input id="bio" class="profile-input" type="text" formControlName="bio">
+      <div
+        *ngIf="form.get('bio').touched && form.get('bio').invalid"
+        class="validation">
+        <small *ngIf="form.get('bio').errors.minlength">
+          Пароль должен быть не менее
+          {{form.get('bio').errors.minlength.requiredLength}}
+          символов. Сейчас он
+          {{form.get('bio').errors.minlength.actualLength}}
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control  profile-control">
+      <label for="image" class="profile-label">Image</label>
+      <input id="image" class="profile-input" type="text" formControlName="image">
+    </div>
+
+    <button type="submit" class="btn" [disabled]="form.invalid">Update</button>
+    <!--  -->
+  </form>
+</div>

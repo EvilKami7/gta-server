@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gta-roleplay-87e2e": {
+      "hosting": {
+        "gta-server": [
+          "gta-roleplay-87e2e"
+        ]
+      }
+    }
+  }
+}
