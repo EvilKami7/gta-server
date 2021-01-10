@@ -1,5 +1,5 @@
 <div class="page-inner">
-  <div class="header-wrapper"  [style.backgroundColor]="mainPage?'transparent':'#1F2041'">
+  <div class="header-wrapper"  [style.backgroundColor]="mainPage?'rgba(0, 0, 0, .6)':'#1F2041'">
     <header class="main-header limit" >
       <h1>
         <a routerLink="/">GTAV ROLEPLAY SERVER</a>
@@ -26,7 +26,10 @@
           </ul>
         </nav>
       <div class="profile-image" *ngIf="auth.isAuthenticated()">
-        <img [src]="profileService.profile.image">
+        <div class="profile-image--inner">
+          <img [src]="profileService.profile.image? profileService.profile.image
+            : 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'">
+        </div>
       </div>
     </header>
   </div>
