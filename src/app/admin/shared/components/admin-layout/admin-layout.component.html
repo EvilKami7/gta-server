@@ -1,10 +1,12 @@
+<app-alert></app-alert>
+
 <div class="page-inner">
   <div class="header-wrapper">
     <header class="main-header limit" >
       <h1>
         <a routerLink="/">Admin</a>
       </h1>
-      <nav class="main-nav" *ngIf="auth.isAuthenticated()">
+      <nav class="main-nav" *ngIf="profileService.isAdmin()">
         <ul>
           <li routerLinkActive="active">
             <a [routerLink]="['/admin', 'dashboard']">Dashboard</a>

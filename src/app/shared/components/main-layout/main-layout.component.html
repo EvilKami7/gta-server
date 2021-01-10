@@ -4,13 +4,30 @@
       <h1>
         <a routerLink="/">GTAV ROLEPLAY SERVER</a>
       </h1>
-      <nav class="main-nav">
-        <ul>
-          <li>
-            <a [routerLink]="['/', 'news']">News</a>
-          </li>
-        </ul>
-      </nav>
+        <nav class="main-nav">
+          <ul class="topmenu">
+            <li>
+              <a [routerLink]="['/', 'news']">News</a>
+            </li>
+            <li *ngIf="auth.isAuthenticated()==false">
+              <a [routerLink]="['/', 'login']">Sign In</a>
+            </li >
+            <li *ngIf="auth.isAuthenticated()==false">
+              <a [routerLink]="['/', 'register']">Sign Up</a>
+            </li>
+            <li *ngIf="auth.isAuthenticated()">
+              {{profileService.profile.name}}
+
+              <ul class="submenu">
+                <li><a [routerLink]="['/', 'profile']">Profile</a></li>
+                <li><a href="#" (click)="logout($event)">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      <div class="profile-image" *ngIf="auth.isAuthenticated()">
+        <img [src]="profileService.profile.image">
+      </div>
     </header>
   </div>
   <div class="container">

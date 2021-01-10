@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {AuthService} from '../admin/shared/services/auth.service';
+import {AuthService} from './services/auth.service';
 import {Router} from '@angular/router';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -22,12 +22,12 @@ export class AuthInterceptor implements HttpInterceptor{
     return next.handle(req)
       .pipe(
         tap(() => {
-          console.log('Interceptor');
+          console.log('Interceptor', req);
         }),
         catchError((error: HttpErrorResponse) => {
           console.log('[Interceptor Error]', error)
           if (error.status === 401){
-            this.auth.logout();
+            this.auth.logoutAsync();
             this.router.navigate(['/admin', 'login'], {
               queryParams: {
                 authFailed: true

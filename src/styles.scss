@@ -20,16 +20,48 @@ a{
   display: inline-block;
   text-decoration: none;
   color: $white;
+  &:hover{
+    color: gray;
+  }
 }
 
 ul{
   display: flex;
   flex-direction: row;
   li{
+    color: $white;
+    position: relative;
+    cursor: pointer;
     text-decoration: none;
     list-style-type: none;
     margin-right: 0.4em;
   }
+}
+
+*:focus{
+  outline: none;
+}
+
+table{
+  width: 100%;
+  margin: 1em 0;
+  text-align: center;
+  //border: $gray solid 2px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  td, th{
+    padding: 1em;
+    //border: $gray solid 1px;
+    .btn{
+      display: inline;
+      width: 45%;
+      margin-right: 0.2em;
+    }
+  }
+  th{
+    background-color: #ccc;
+  }
+
 }
 
 .limit{
@@ -63,5 +95,19 @@ input{
 }
 label{
   color: $gray;
+}
+
+.forms{
+  transform: translate(50%, 50%);
+  width: 50%;
+  align-self: center;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+}
+.form-control{
+  margin: 1em 0;
+}
+.validation{
+  color: $red;
 }
 

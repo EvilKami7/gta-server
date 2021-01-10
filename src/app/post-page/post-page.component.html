@@ -1,10 +1,14 @@
-<div class = "post limit">
+<div class = "post limit" *ngIf="post$ | async as post; else loading">
   <div class="post-header">
-    <h1>Post title</h1>
-
-    <button routerLink="/" class="btn btn-link">on main</button>
+    <h1>{{post.title}}</h1>
+    <p><small></small>{{post.author}}</p>
   </div>
-  <div class="post-descrip">
-
+  <div class="post-text">
+    <quill-view-html [content]="post.text"></quill-view-html>
   </div>
+  <button routerLink="/" class="btn btn-link">on main</button>
 </div>
+
+<ng-template #loading>
+  <p>Loading</p>
+</ng-template>

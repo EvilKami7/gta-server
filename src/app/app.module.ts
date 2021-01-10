@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, Provider} from '@angular/core';
+import {registerLocaleData} from '@angular/common';
+import ruLocale from '@angular/common/locales/ru';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,12 +14,29 @@ import { NewsPageComponent } from './news-page/news-page.component';
 import {SWIPER_CONFIG, SwiperModule, SwiperConfigInterface} from 'ngx-swiper-wrapper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
-import {AuthService} from './admin/shared/services/auth.service';
-import {AuthGuard} from './admin/shared/services/auth.guard';
+import {AuthService} from './shared/services/auth.service';
+import {AuthGuard} from './shared/services/auth.guard';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './shared/auth.interceptor';
+import { SignPageComponent } from './sign-page/sign-page.component';
+import {AdminGuard} from './shared/services/admin.guard';
+import { ProfileComponent } from './profile/profile.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {ProfileService} from './shared/services/profile.service';
 
+registerLocaleData(ruLocale, 'ru');
 
+const FIREBASE_CONFIG = {
+  apiKey: 'AIzaSyAr2e7j4Yd-Ltj5tOV236I5qsj_-AkPAns',
+  authDomain: 'gta-roleplay-87e2e.firebaseapp.com',
+  databaseURL: 'https://gta-roleplay-87e2e-default-rtdb.firebaseio.com',
+  projectId: 'gta-roleplay-87e2e',
+  storageBucket: 'gta-roleplay-87e2e.appspot.com',
+  messagingSenderId: '276477598385',
+  appId: '1:276477598385:web:14399129dc6030f6d56090'
+};
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   observer: true,
@@ -31,7 +51,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
   useClass: AuthInterceptor
-}
+};
 
 @NgModule({
   declarations: [
@@ -41,19 +61,28 @@ const INTERCEPTOR_PROVIDER: Provider = {
     PostPageComponent,
     PostComponent,
     NewsPageComponent,
+    SignPageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SwiperModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
   ],
   providers: [    {
     provide: SWIPER_CONFIG,
     useValue: DEFAULT_SWIPER_CONFIG
   },
     AuthService,
+    ProfileService,
+    AdminGuard,
     AuthGuard,
     INTERCEPTOR_PROVIDER
   ],

@@ -4,6 +4,10 @@ import {MainLayoutComponent} from "./shared/components/main-layout/main-layout.c
 import {HomePageComponent} from "./home-page/home-page.component";
 import {PostPageComponent} from "./post-page/post-page.component";
 import {NewsPageComponent} from "./news-page/news-page.component";
+import {SignPageComponent} from './sign-page/sign-page.component';
+import {LoginPageComponent} from './login-page/login-page.component';
+import {ProfileComponent} from './profile/profile.component';
+import {AuthGuard} from './shared/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +15,9 @@ const routes: Routes = [
       {path:'', redirectTo: '/', pathMatch: 'full'},
       {path: '', component: HomePageComponent},
       {path:'news', component: NewsPageComponent},
+      {path:'register', component: SignPageComponent},
+      {path:'login', component: LoginPageComponent},
+      {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
       {path:'post/:id', component: PostPageComponent}
     ]
   },
@@ -26,4 +33,6 @@ const routes: Routes = [
   })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+}

@@ -17,6 +17,20 @@
         </div>
       </div>
 
+      <div
+        [ngClass]="{invalid: form.get('descrip').touched && form.get('descrip').invalid}"
+        class="form-control">
+        <label for="descrip">Описание поста:</label>
+        <input id="descrip" type="text" formControlName="descrip">
+        <div
+          *ngIf="form.get('descrip').touched && form.get('descrip').invalid"
+          class="validation">
+          <small *ngIf="form.get('descrip').errors.required">
+            Заполните поле
+          </small>
+        </div>
+      </div>
+
       <div class="form-control">
         <label>Контент поста:</label>
         <quill-editor formControlName="text"></quill-editor>

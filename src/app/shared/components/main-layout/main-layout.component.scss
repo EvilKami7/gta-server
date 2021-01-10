@@ -10,14 +10,56 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  h1{
+    margin-right: inherit;
+  }
 }
+
 .page-inner{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  //flex-grow: ;
 }
 .container{
   flex: 1;
   height: 100%;
+}
+
+.profile-image{
+  width: 5%;
+  height: auto;
+  border-radius: 50%;
+  margin: 0 20px;
+  img{
+    border-radius: inherit;
+    display: block;
+    width: 100%; /* Ширина изображений */
+    height: 100%; /* Высота изображении */
+    object-fit: cover;
+  }
+}
+
+.submenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  z-index: 10;
+  padding-left: 0;
+  visibility: hidden;
+  li{
+    border-color: $white;
+    background-color: $black;
+    padding: 10px 30px;
+    &:hover{
+      a{
+        color: $black;
+      }
+      background-color: $white;
+    }
+  }
+}
+
+.topmenu li:hover .submenu {
+  visibility: visible;
 }

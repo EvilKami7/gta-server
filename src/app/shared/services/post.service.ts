@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {FbCreateResponse, Post} from './interfaces';
-import {environment} from '../../environments/environment';
+import {FbCreateResponse, Post} from '../interfaces';
+import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -15,7 +15,7 @@ export class PostService {
         return {
           ...post,
           id: response.name,
-          date: new Date()
+          date: new Date(post.date)
         };
       }))
       ;
@@ -34,6 +34,25 @@ export class PostService {
             }));
         })
       );
+  }
+
+  getById(id: string): Observable<Post> {
+    return this.http.get<Post>(`${environment.fbDBUrl}/posts/${id}.json`)
+      .pipe(map( (post: Post) => {
+        return {
+          ...post,
+          id,
+          date: new Date(post.date)
+        };
+      }));
+  }
+
+  remove(id: string): Observable<void>{
+    return this.http.delete<void>(`${environment.fbDBUrl}/posts/${id}.json`);
+  }
+
+  update(post: Post): Observable<Post> {
+    return this.http.patch<Post>(`${environment.fbDBUrl}/posts/${post.id}.json`, post);
   }
 
 }
