@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.content);
+    //console.log(this.content);
     for (const item of this.main){
       this.anchorsId.push(item.id);
     }
@@ -62,6 +62,7 @@ export class HomePageComponent implements OnInit {
     navigation: true,
     pagination: false,
     loop: true,
+    autoplay: true,
   };
 
   @HostListener('mousewheel', ['$event'])
