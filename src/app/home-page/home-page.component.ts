@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Swiper, SwiperOptions} from 'swiper';
 import {ViewportScroller} from '@angular/common';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-home-page',
@@ -12,6 +13,7 @@ export class HomePageComponent implements OnInit {
   main: HTMLCollectionOf<Element> = document.getElementsByClassName('main-content');
   anchorsId: string[] = [];
   viewPageIndex: number;
+  //public slides: string[] = [];
   constructor() {
     this.viewPageIndex = 0;
   }
@@ -21,22 +23,32 @@ export class HomePageComponent implements OnInit {
     for (const item of this.main){
       this.anchorsId.push(item.id);
     }
+/*
+    const storage = firebase.storage();
+    const storageRef = storage.ref();
+
+    storageRef.child('swiper').listAll().then(res =>  {
+      res.items.forEach(itemRef =>{
+        this.slides.push('gs://gta-roleplay-87e2e.appspot.com/' + itemRef.fullPath);
+        console.log(itemRef.fullPath);
+      });
+    }).catch(function(error) {
+      console.log(error)
+    });*/
+
   }
 
 
-
   public slides = [
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-43-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-42-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-41-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-40-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-39-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-38-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-29-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-28-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-27-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-26-2560x1600.jpg',
-    'http://www.gtafans.ru/sites/default/files/imagepicker/1/gtafans-ru-gta-5-wallpapers-20-2560x1600.jpg'
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-26-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-29-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-38-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-39-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-40-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-41-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-42-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-43-2560x1600.jpg',
+
   ];
 
 
@@ -65,7 +77,7 @@ export class HomePageComponent implements OnInit {
       }
     }
     event.preventDefault();
-    console.log(event);
+    //console.log(event);
     this.main[this.viewPageIndex].scrollIntoView({block: 'center', behavior: 'smooth'});
   }
 }
