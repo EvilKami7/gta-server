@@ -1,12 +1,46 @@
 <div class = "post limit" *ngIf="post$ | async as post; else loading">
   <div class="post-header">
     <h1>{{post.title}}</h1>
-    <p><small></small>{{post.author}}</p>
+    <p><small>{{post.author}}</small></p>
+    <p><small>{{post.date | date: 'medium': null: 'ru'}}</small></p>
   </div>
   <div class="post-text">
     <quill-view-html [content]="post.text"></quill-view-html>
   </div>
-  <button routerLink="/" class="btn btn-link">on main</button>
+
+  <hr>
+
+  <div class="post-comment" *ngIf="user; else authorize">
+      <form class="comment-form" (ngSubmit)="addComment()">
+        <fieldset [disabled]="isSubmitting">
+          <div class="comment-block">
+            <textarea class="comment-form--textarea"
+                      placeholder="Write a comment..."
+                      rows="3"
+                      [formControl]="commentControl">
+            </textarea>
+          </div>
+          <div class="comment-footer">
+            <div class="profile-image">
+              <div class="profile-image--inner">
+                <img [src]="profileService.profile.image? profileService.profile.image
+                      : 'https://static.productionready.io/images/smiley-cyrus.jpg'">
+              </div>
+            </div>
+            <button class="btn btn-sm btn-primary btn-comment" type="submit">
+              Post Comment
+            </button>
+          </div>
+        </fieldset>
+      </form>
+  </div>
+
+  <ng-template #authorize>
+    <div class="post-link">
+      <a class="dark-link" [routerLink]="['/login']">Sign in</a> or <a class="dark-link" [routerLink]="['/register']">sign up</a> to add comments on this article.
+    </div>
+  </ng-template>
+
 </div>
 
 <ng-template #loading>

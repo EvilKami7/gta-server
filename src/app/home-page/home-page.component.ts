@@ -40,14 +40,14 @@ export class HomePageComponent implements OnInit {
 
 
   public slides = [
-    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-26-2560x1600.jpg',
-    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-29-2560x1600.jpg',
-    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-38-2560x1600.jpg',
-    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-39-2560x1600.jpg',
-    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-40-2560x1600.jpg',
-    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-41-2560x1600.jpg',
-    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-42-2560x1600.jpg',
     './assets/swiper-images/gtafans-ru-gta-5-wallpapers-43-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-42-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-41-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-40-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-39-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-38-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-29-2560x1600.jpg',
+    './assets/swiper-images/gtafans-ru-gta-5-wallpapers-26-2560x1600.jpg',
 
   ];
 

@@ -1,9 +1,17 @@
+@import "variables.scss";
 .post {
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 70%;
+  margin: 0 auto;
+  font-family: $font-family;
+  &-header {
+    padding: 0 15px;
+    p{
+      display: inline-block;
+      margin-right: 0.2em;
+    }
+    //display: flex;
+    //justify-content: space-between;
+    //align-items: center;
   }
 
   h1 {
@@ -16,4 +24,46 @@
     }
   }
 
+  &-text{
+
+  }
+
+  &-link{
+    text-align: center;
+  }
+  &-comment{
+    width: 70%;
+    margin: 0 auto;
+  }
+
+
+}
+
+.comment{
+  &-form{
+    border: 1px solid #e5e5e5;
+    border-radius: 0.2em;
+    fieldset{
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+    &--textarea{
+      border: 0;
+      width: 100%;
+      padding: 1.25rem;
+      box-sizing: border-box;
+    }
+  }
+  &-footer{
+    background-color: #cccccc;
+    padding: .75rem 1.25rem;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .btn-comment{
+      width: auto;
+    }
+  }
 }

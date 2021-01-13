@@ -14,12 +14,21 @@ export class AuthService {
   public error$: Subject<string> = new Subject<string>();
   public currentUser: firebase.User;
   public tokenId: string = null;
+  public inProgress: boolean;
 
   constructor(
     private http: HttpClient,
     private afAuth: AngularFireAuth,
     private afDataBase: AngularFireDatabase,
   ){
+    this.tokenId = localStorage.getItem('fb-token');
+    if(this.tokenId) {
+      // this.inProgress = true;
+      // this.afAuth.signInWithCustomToken(this.tokenId).then(response => {
+      //   this.currentUser = response.user;
+      //   this.inProgress = false;
+      // });
+    }
   }
 
   static onAuthError(error: any): void {
@@ -31,20 +40,27 @@ export class AuthService {
     return this.tokenId;
   }
 
-
   loginAsync(user: User): Observable<string | null>{
     const promise = this.afAuth.signInWithEmailAndPassword(user.email, user.password)
       .then(response => {
         this.currentUser = response.user;
         return response.user.getIdToken()
       }, AuthService.onAuthError)
-      .then( response => this.tokenId = response ? response : null);
+      .then( response => {
+        this.tokenId = response ? response : null;
+        localStorage.setItem('fb-token', this.tokenId);
+        return this.tokenId
+      });
     return from(promise);
   }
 
   logoutAsync(): Observable<void> {
     const promise = this.afAuth.signOut()
-      .then(() => {this.tokenId = null; this.currentUser = null});
+      .then(() => {
+        this.tokenId = null;
+        this.currentUser = null;
+        localStorage.clear();
+      });
     return from(promise);
   }
 
@@ -89,16 +105,16 @@ export class AuthService {
 
 
 
-  /*private setToken(response: FbAuthResponse | null) {
+  private setToken(response: FbAuthResponse | null) {
     if (response){
       console.log(response);
-      const expDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
+      //const expDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
       localStorage.setItem('fb-token', response.idToken);
-      localStorage.setItem('fb-token-exp', expDate.toString());
+      //localStorage.setItem('fb-token-exp', expDate.toString());
     }else{
       localStorage.clear();
     }
-  }*/
+  }
 
 
 }
