@@ -25,6 +25,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {ProfileService} from './shared/services/profile.service';
+import {UserResolver} from './shared/services/user.resolver';
+import { StepsComponent } from './shared/components/steps/steps.component';
 
 registerLocaleData(ruLocale, 'ru');
 
@@ -63,9 +65,11 @@ const INTERCEPTOR_PROVIDER: Provider = {
     NewsPageComponent,
     SignPageComponent,
     ProfileComponent,
+    StepsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SwiperModule,
     BrowserAnimationsModule,
@@ -82,6 +86,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
   },
     AuthService,
     ProfileService,
+    UserResolver,
     AdminGuard,
     AuthGuard,
     INTERCEPTOR_PROVIDER

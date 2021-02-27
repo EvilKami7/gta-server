@@ -5,7 +5,7 @@ import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {HttpClient} from '@angular/common/http';
 import firebase from 'firebase';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 
@@ -15,12 +15,13 @@ export class ProfileService {
   private user: AngularFireList<Profile[]>;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private afAuth: AngularFireAuth,
     private afDataBase: AngularFireDatabase,
     private router: Router,
     ){
-
+    this.profile = activatedRoute.snapshot.data['profile'] || {}
   }
 
   static profileSaveError(e: Error) {

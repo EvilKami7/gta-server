@@ -50,6 +50,20 @@
         </div>
       </div>
 
+      <div
+        [ngClass]="{invalid: form.get('image').touched && form.get('image').invalid}"
+        class="form-control">
+        <label for="image">Изображение:</label>
+        <input id="image" type="text" formControlName="image">
+        <div
+          *ngIf="form.get('image').touched && form.get('image').invalid"
+          class="validation">
+          <small *ngIf="form.get('image').errors.required">
+            Заполните поле
+          </small>
+        </div>
+      </div>
+
       <button type="submit" class="btn" [disabled]="form.invalid">Создать пост</button>
     </form>
 

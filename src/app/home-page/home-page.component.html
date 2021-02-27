@@ -9,17 +9,54 @@
         </div>
       </div>
 
-      <div class="swiper-scrollbar"></div>
+<!--      <div class="swiper-scrollbar"></div>
       <div class="swiper-pagination"></div>
 
       <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <div class="swiper-button-next"></div>-->
     </div>
   </div>
   <div class="main-content" id="main-content-text">
-
+    <div class="main-content--wrapper">
+      <div><h1>Начать игру легко и проще простого!</h1></div>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada elit augue,
+        nec tincidunt ante gravida et. Suspendisse maximus ipsum vitae metus dapibus pretium.
+        Nunc quis quam et nibh egestas lobortis vehicula eget libero. Nunc at dui consectetur,
+        dapibus mauris et, posuere mi. Suspendisse sem ipsum, fermentum in metus et, convallis
+        feugiat dolor. Integer imperdiet augue et mollis tempus. In a pulvinar metus, sed commodo
+        ante. Mauris quis congue nisi. Duis sagittis metus sed aliquet venenatis.
+        In malesuada interdum mattis. Morbi eu tristique magna. Maecenas sollicitudin arcu quam,
+        id feugiat sem viverra non. Morbi lacinia velit id porttitor pellentesque.
+      </div>
+      <div class="steps-container">
+        <app-steps></app-steps>
+      </div>
+    </div>
   </div>
-  <div class="main-content" id="main-content-descrip">
+  <div class="main-content" id="main-content-news">
+    <div class="main-content--wrapper">
+      <div><h1>Последние новости</h1></div>
+      <div class="news-container">
+        <div *ngIf="posts$ | async as posts; else loading">
+          <div  class="swiper-container" [swiper]="newsConfig">
+            <div class="swiper-wrapper">
+                <app-post
+                  *ngFor="let post of posts"
+                  [post]="post"
+                ></app-post>
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

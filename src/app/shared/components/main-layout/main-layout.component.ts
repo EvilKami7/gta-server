@@ -1,5 +1,5 @@
 import {Component, DoCheck, OnInit, ViewEncapsulation} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {AuthService} from '../../services/auth.service';
 import {ProfileService} from '../../services/profile.service';

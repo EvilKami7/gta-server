@@ -8,17 +8,18 @@ import {SignPageComponent} from './sign-page/sign-page.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {ProfileComponent} from './profile/profile.component';
 import {AuthGuard} from './shared/services/auth.guard';
+import {UserResolver} from './shared/services/user.resolver';
 
 const routes: Routes = [
   {
     path:'', component: MainLayoutComponent, children: [
       {path:'', redirectTo: '/', pathMatch: 'full'},
       {path: '', component: HomePageComponent},
-      {path:'news', component: NewsPageComponent},
+      {path:'news', component: NewsPageComponent, resolve: {profile: UserResolver}},
       {path:'register', component: SignPageComponent},
       {path:'login', component: LoginPageComponent},
-      {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-      {path:'post/:id', component: PostPageComponent}
+      {path:'profile', component: ProfileComponent, resolve: {profile: UserResolver}, canActivate: [AuthGuard]},
+      {path:'post/:id', component: PostPageComponent, resolve: {profile: UserResolver}}
     ]
   },
   {

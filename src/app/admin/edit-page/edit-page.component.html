@@ -28,6 +28,20 @@
       </div>
     </div>
 
+    <div
+      [ngClass]="{invalid: form.get('image').touched && form.get('image').invalid}"
+      class="form-control">
+      <label for="image">Описание поста:</label>
+      <input id="image" type="text" formControlName="image">
+      <div
+        *ngIf="form.get('image').touched && form.get('image').invalid"
+        class="validation">
+        <small *ngIf="form.get('image').errors.required">
+          Заполните поле
+        </small>
+      </div>
+    </div>
+
     <div class="form-control">
       <label>Контент поста:</label>
       <quill-editor formControlName="text"></quill-editor>

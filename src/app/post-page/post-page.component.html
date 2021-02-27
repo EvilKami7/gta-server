@@ -1,4 +1,7 @@
 <div class = "post limit" *ngIf="post$ | async as post; else loading">
+  <div class="post-image">
+    <img src="{{post.image}}">
+  </div>
   <div class="post-header">
     <h1>{{post.title}}</h1>
     <p><small>{{post.author}}</small></p>
@@ -8,13 +11,13 @@
     <quill-view-html [content]="post.text"></quill-view-html>
   </div>
 
-  <hr>
+<!--  <hr>
 
   <div class="post-comment" *ngIf="user; else authorize">
       <form class="comment-form" (ngSubmit)="addComment()">
         <fieldset [disabled]="isSubmitting">
           <div class="comment-block">
-            <textarea class="comment-form--textarea"
+            <textarea class="comment-form&#45;&#45;textarea"
                       placeholder="Write a comment..."
                       rows="3"
                       [formControl]="commentControl">
@@ -22,7 +25,7 @@
           </div>
           <div class="comment-footer">
             <div class="profile-image">
-              <div class="profile-image--inner">
+              <div class="profile-image&#45;&#45;inner">
                 <img [src]="profileService.profile.image? profileService.profile.image
                       : 'https://static.productionready.io/images/smiley-cyrus.jpg'">
               </div>
@@ -33,14 +36,14 @@
           </div>
         </fieldset>
       </form>
-  </div>
+  </div>-->
 
-  <ng-template #authorize>
+  <!--<ng-template #authorize>
     <div class="post-link">
       <a class="dark-link" [routerLink]="['/login']">Sign in</a> or <a class="dark-link" [routerLink]="['/register']">sign up</a> to add comments on this article.
     </div>
   </ng-template>
-
+  -->
 </div>
 
 <ng-template #loading>

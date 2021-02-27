@@ -1,0 +1,37 @@
+@import "variables.scss";
+
+.step{
+  &-container{
+    position: relative;
+    margin: 3em 1em;
+    &:before{
+      content: attr(data-before);
+      text-align: center;
+      font-size: $font-size-h1;
+      font-weight: bold;
+      line-height: 2.6em;
+      color: $black;
+      display: block;
+      width: 2.6em; height: 2.6em;
+      position: absolute;
+      top: calc(50% - 1.3em);
+      left: -3.5em;
+      border-radius: 50%;
+      background-color: #FCB016;
+        //rgb(255, 255, 102);
+    }
+  }
+  &-number{
+    color: #FF3377;
+    font-size: $font-size-h1;
+    letter-spacing: 1px;
+  }
+  &-title {
+    font-size: $font-size-h1;
+    font-weight: bold;
+  }
+  &-description{
+    margin-top: 1em;
+  }
+}
+

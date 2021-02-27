@@ -31,14 +31,15 @@ $border-color:                $gray;
 
 // Базовая типографика
 
-$font-size:                   0.875em;
+$font-size:                   16px;
+$font-size-small:             14px;
 
-$font-size-h1:                1.5px;
-$font-size-h2:                1.2px;
-$font-size-h3:                1.1px;
-$font-size-h4:                1px;
-$font-size-h5:                12px;
-$font-size-h6:                12px;
+$font-size-h1:                1.5em;
+$font-size-h2:                1.2em;
+$font-size-h3:                1.1em;
+$font-size-h4:                1em;
+$font-size-h5:                0.875em;
+$font-size-h6:                0.75em;
 
 $font-size-sm:                0.75em; // 12px от 16px
 
@@ -51,10 +52,8 @@ $line-height--var:            17px;
 
 $typo-margin-vertical:        1em;
 
-$font-family:                 Times, Times New Roman, Georgia, serif;
-$font-family--monospace:      'montserrat';
-$font-family--bold:           'montserrat-Bold';
-$font-family--quicksandbold:  'montserrat-Bold';
+$font-family:                 Gotham, Times, Times New Roman, Georgia, serif;
+
 // Georgia, Times New Roman, Times, serif
 
 
@@ -98,3 +97,12 @@ $toggler-part-height:         3px;
 $toggler-part-bg-color:       #000;
 
 $z-index-modal:               100;
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../assets/fonts/Gotham_pro.ttf") format("truetype");
+  /*url("../fonts/montserrat.woff") format("woff"),
+  url("../fonts/montserrat.woff2") format("woff2");*/
+  font-style: normal;
+  font-stretch: normal;
+}

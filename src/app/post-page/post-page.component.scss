@@ -3,6 +3,19 @@
   max-width: 70%;
   margin: 0 auto;
   font-family: $font-family;
+  &-image{
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    img{
+      border-radius: 50%;
+      width: 30em;
+      height: 30em;
+      object-fit: contain;
+    }
+  }
+
   &-header {
     padding: 0 15px;
     p{

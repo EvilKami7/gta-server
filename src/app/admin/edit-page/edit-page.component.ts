@@ -34,6 +34,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
         title: new FormControl(post.title, Validators.required),
         descrip: new FormControl(post.descrip, Validators.required),
         text: new FormControl(post.text, Validators.required),
+        image: new FormControl(post.image, Validators.required),
       });
     });
   }
@@ -54,6 +55,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       text: this.form.value.text,
       descrip: this.form.value.descrip,
       title: this.form.value.title,
+      image: this.form.value.image
     }).subscribe( () => {
       this.submitted = false;
     });

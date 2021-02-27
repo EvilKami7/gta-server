@@ -2,6 +2,9 @@ import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {Swiper, SwiperOptions} from 'swiper';
 import {ViewportScroller} from '@angular/common';
 import firebase from 'firebase';
+import {Post} from '../shared/interfaces';
+import {Observable} from 'rxjs';
+import {PostService} from '../shared/services/post.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,12 +16,15 @@ export class HomePageComponent implements OnInit {
   main: HTMLCollectionOf<Element> = document.getElementsByClassName('main-content');
   anchorsId: string[] = [];
   viewPageIndex: number;
+  posts$: Observable<Post[]>
   //public slides: string[] = [];
-  constructor() {
+  constructor(private postService: PostService) {
     this.viewPageIndex = 0;
   }
 
+
   ngOnInit(): void {
+    this.posts$ = this.postService.getAll();
     //console.log(this.content);
     for (const item of this.main){
       this.anchorsId.push(item.id);
@@ -62,7 +68,20 @@ export class HomePageComponent implements OnInit {
     navigation: true,
     pagination: false,
     loop: true,
-    autoplay: true,
+    autoplay: false,
+  };
+
+  public newsConfig: SwiperOptions = {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    navigation: true,
+    loop: true,
+    centeredSlides: true,
+    cssMode: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
   };
 
   @HostListener('mousewheel', ['$event'])

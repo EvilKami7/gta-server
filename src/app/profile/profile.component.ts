@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Profile} from '../shared/interfaces';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProfileService} from '../shared/services/profile.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../shared/services/auth.service';
 
 @Component({
@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     public profileService: ProfileService,
     public auth: AuthService,
-    private router: Router) {
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
 
   }
 

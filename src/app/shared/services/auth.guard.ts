@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {ProfileService} from './profile.service';
+import {concatMap, map, tap} from 'rxjs/operators';
 
 @Injectable()
 export class AuthGuard implements CanActivate{
@@ -18,16 +19,10 @@ export class AuthGuard implements CanActivate{
     route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return new Promise((resolve, reject) => {
-      this.afAuth.authState.subscribe(user => {
-        if (user) {
-          this.auth.currentUser = user;
-          if (Object.keys(this.profileService.profile).length === 0) {
-            this.profileService.loadProfileAsync(user.uid).subscribe(() => resolve(true))
-          }
-          else resolve(true);
-        }
-        else resolve(false);
-      })
+      this.afAuth.authState.pipe(
+        tap(user => this.auth.currentUser = user),
+        map(user => !!user)
+      ).subscribe(response => resolve(response))
     });
   }
 

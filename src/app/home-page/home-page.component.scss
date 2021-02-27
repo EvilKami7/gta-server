@@ -10,13 +10,13 @@
   scroll-snap-type: y mandatory;
   .main-content{
     width: 100%;
-    height: calc(100vh - 2px);
+    height: calc(100vh);
     background: $black;
-    border-bottom: 2px black solid;
+    //border-bottom: 2px black solid;
     scroll-snap-align: center;
   }
   .main-content:first-child{
-    height: calc(100vh - 2px);
+    height: calc(100vh);
     margin-top: -5em;
     //position: absolute;
 
@@ -36,4 +36,35 @@
 .swiper-img{
   width: 100%;
   height: 100%;
+}
+
+#main-content-text{
+  background: url(https://www.gtarp.ru/templates/assets/images/map-bg.png) no-repeat center top;
+  background-color: rgba(31, 32, 65, 1);
+  color: $white;
+
+}
+
+.steps-container{
+  font-size: $font-size-h3;
+  align-self: flex-end;
+  margin: 1rem;
+  width: calc(50%);
+}
+
+.main-content--wrapper{
+  h1{
+    color: $white;
+  }
+  display: flex;
+  flex-direction: column;
+  width: calc(60%);
+  margin: 3em auto;
+  //color: $white;
+  text-align: center;
+}
+
+#main-content-news{
+  background: linear-gradient(to right, rgba(31,32,65,0.4), rgba(31,32,65,0.4)), url("https://i.playground.ru/p/pqeD57EbRLYCILmCoSbvNA.png") no-repeat ;
+  background-size: cover;
 }

@@ -33,7 +33,14 @@ export interface Post {
   descrip: string;
   text: string;
   author: string;
+  image: string;
   date: Date;
+}
+
+export interface Steps {
+  id: number;
+  title: string;
+  description: string;
 }
 
 export interface FbCreateResponse {
