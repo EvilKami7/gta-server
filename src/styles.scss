@@ -117,8 +117,27 @@ label{
 }
 
 
-@media screen and (max-width:  1200px) {
+@media screen and (max-width:  1400px) {
   body{
     font-size: $font-size-small;
   }
+
+  .limit{
+    width: 80%;
+    margin: 0 auto;
+  }
 }
+
+@media screen and (max-width:  800px) {
+  body{
+    font-size: $font-size-xsmall;
+  }
+  .limit{
+    width: 90%;
+    margin: 0 auto;
+  }
+  h1{
+    font-size: 1.5em;
+  }
+}
+

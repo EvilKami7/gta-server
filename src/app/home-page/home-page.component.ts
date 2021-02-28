@@ -16,7 +16,8 @@ export class HomePageComponent implements OnInit {
   main: HTMLCollectionOf<Element> = document.getElementsByClassName('main-content');
   anchorsId: string[] = [];
   viewPageIndex: number;
-  posts$: Observable<Post[]>
+  posts$: Observable<Post[]>;
+  smoothScroll: boolean;
   //public slides: string[] = [];
   constructor(private postService: PostService) {
     this.viewPageIndex = 0;
@@ -29,19 +30,8 @@ export class HomePageComponent implements OnInit {
     for (const item of this.main){
       this.anchorsId.push(item.id);
     }
-/*
-    const storage = firebase.storage();
-    const storageRef = storage.ref();
 
-    storageRef.child('swiper').listAll().then(res =>  {
-      res.items.forEach(itemRef =>{
-        this.slides.push('gs://gta-roleplay-87e2e.appspot.com/' + itemRef.fullPath);
-        console.log(itemRef.fullPath);
-      });
-    }).catch(function(error) {
-      console.log(error)
-    });*/
-
+    this.smoothScroll = (window.innerWidth || document.documentElement.clientWidth) < 850 ? false : true;
   }
 
 
@@ -72,17 +62,38 @@ export class HomePageComponent implements OnInit {
   };
 
   public newsConfig: SwiperOptions = {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    navigation: true,
-    loop: true,
-    centeredSlides: true,
-    cssMode: true,
+    slidesPerView: 3,
+    spaceBetween: 150,
+    centeredSlides: false,
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      // when window width is >= 640px
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 150
+      },
+      1500:{
+        slidesPerView: 3,
+        spaceBetween: 200
+      }
+    },
+    //navigation: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
     },
   };
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: WindowEventHandlers){
+    this.smoothScroll = (window.innerWidth || document.documentElement.clientWidth) < 850 ? false : true;
+  }
+
 
   @HostListener('mousewheel', ['$event'])
   onScroll(event: WheelEvent){
@@ -96,8 +107,11 @@ export class HomePageComponent implements OnInit {
         this.viewPageIndex -= 1;
       }
     }
-    event.preventDefault();
-    //console.log(event);
-    this.main[this.viewPageIndex].scrollIntoView({block: 'center', behavior: 'smooth'});
+      if (this.smoothScroll){
+        event.preventDefault();
+        this.main[this.viewPageIndex].scrollIntoView({block: 'center', behavior: 'smooth'});
+      }
+
   }
+
 }

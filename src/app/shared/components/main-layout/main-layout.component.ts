@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, DoCheck, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {AuthService} from '../../services/auth.service';
@@ -15,6 +15,9 @@ import {from} from 'rxjs';
 export class MainLayoutComponent implements OnInit {
   mainPage: boolean;
   public profile: Profile = {} as Profile;
+  dropSvg: any = document.getElementById('dropMenu');
+  dropMenu: any = document.getElementsByClassName('drop-menu');
+  public isButtonVisible = false;
 
   constructor(
     private router: Router,
@@ -40,12 +43,5 @@ export class MainLayoutComponent implements OnInit {
       this.router.navigate(['/', 'login']);
     });
   }
-
-/*
-  ngDoCheck(): void {
-    console.log('onCheck',this.profileService.profile);
-    this.profile = this.profileService.profile;
-  }
-*/
 
 }

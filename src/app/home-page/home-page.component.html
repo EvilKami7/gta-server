@@ -41,7 +41,7 @@
         <div *ngIf="posts$ | async as posts; else loading">
           <div  class="swiper-container" [swiper]="newsConfig">
             <div class="swiper-wrapper">
-                <app-post
+                <app-post class = swiper-slide
                   *ngFor="let post of posts"
                   [post]="post"
                 ></app-post>

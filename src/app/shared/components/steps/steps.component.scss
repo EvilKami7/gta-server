@@ -35,3 +35,14 @@
   }
 }
 
+@media screen and (max-width: 850px) {
+  .step {
+    &-container {
+      &:before {
+        position: relative;
+        top: -1em;
+        left: calc(50% - 1.3em);
+      }
+    }
+  }
+}

@@ -1,8 +1,27 @@
 @import "variables.scss";
+
+#dropMenu{
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+.main-nav{
+  display: none;
+}
+
+.header-title{
+  width: 100%;
+  a{
+    float: right;
+  }
+}
+
 .header-wrapper, .footer-wrapper{
   background-color: $black;
   height: 5em;
   z-index: 2;
+  position: relative;
 }
 .main-header, .main-footer{
   color: $black;
@@ -10,6 +29,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: inherit;
   h1{
     margin-right: inherit;
   }
@@ -44,7 +64,7 @@
   }
 }
 
-.submenu {
+.submenu, .drop-submenu{
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -67,4 +87,48 @@
 
 .topmenu li:hover .submenu {
   visibility: visible;
+}
+.drop-menu .drop-submenu li:hover .submenu {
+  li{
+    border-color: $black;
+    background-color: $white;
+    padding: 10px 30px;
+    &:hover{
+      a{
+        color: $white;
+      }
+      background-color: $black;
+    }
+  }
+  visibility: visible;
+}
+
+.drop-submenu{
+ visibility: visible;
+ left: 1em;
+ top: 4em;
+}
+
+.profile-image{
+ display: none;
+}
+
+@media screen and (min-width: 550px) {
+  #dropMenu{
+    display: none;
+  }
+  .drop-menu{
+    display: none;
+  }
+  .main-nav{
+    display: block;
+  }
+  .header-title{
+    width: auto;
+  }
+
+  .profile-image{
+    display: block;
+  }
+
 }

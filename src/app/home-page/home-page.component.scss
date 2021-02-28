@@ -2,6 +2,8 @@
 @import '~swiper/swiper.scss';
 @import 'variables.scss';
 
+
+
 .content-wrapper{
 
   display: flex;
@@ -22,6 +24,7 @@
 
   }
 }
+
 
 .swiper-container{
   width: 100%;
@@ -67,4 +70,25 @@
 #main-content-news{
   background: linear-gradient(to right, rgba(31,32,65,0.4), rgba(31,32,65,0.4)), url("https://i.playground.ru/p/pqeD57EbRLYCILmCoSbvNA.png") no-repeat ;
   background-size: cover;
+}
+
+@media screen and (max-width: 850px) {
+  .content-wrapper {
+    scroll-behavior: auto;
+    scroll-snap-type: y mandatory;
+
+    .main-content{
+      height: auto;
+      &--wrapper{
+        width: calc(90%);
+      }
+    }
+  }
+
+  .steps-container{
+    align-self: center;
+    margin: 1rem;
+    width: calc(80%);
+  }
+
 }
